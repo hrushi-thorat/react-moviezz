@@ -1,16 +1,16 @@
+const initState = {
+  popular: [],
+  upcoming: [],
+  top_rated: [],
+};
 
-const initState{
-    popular:[],
-    upcoming:[],
-    top_rated:[],
-}
-
-
-const moviesReducer=(state=initState,action)=>{
-switch(action.type){
+const moviesReducer = (state = initState, action) => {
+  switch (action.type) {
     case "FETCH_MOVIE":
-        return{...state}
+      return { ...state };
     default:
-        return{...state}
-}
-}
+      return { ...state };
+  }
+};
+
+export default moviesReducer;
