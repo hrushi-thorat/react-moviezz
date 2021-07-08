@@ -1,17 +1,14 @@
-import React,{useEffect} from "react"
-import { useDispatch } from "react-redux";
-import { loadmovies } from "./Actions/moviesAction";
+import React from "react"
+//pages
+import Home from "./pages/Home"
 
 
 
 function App() {
-const dispatch=useDispatch()
-useEffect(()=>{
-  dispatch(loadmovies());
-})
+
   return (
     <div className="App">
-<h1>Moviezzz</h1>
+<Home/>
     </div>
   );
 }
