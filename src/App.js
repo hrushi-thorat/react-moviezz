@@ -1,14 +1,14 @@
-import React from "react"
+import React from "react";
 //pages
-import Home from "./pages/Home"
-
-
+import Home from "./pages/Home";
+//components
+import GlobalStyle from "./components/GlobalStyles";
 
 function App() {
-
   return (
     <div className="App">
-<Home/>
+      <GlobalStyle />
+      <Home />
     </div>
   );
 }
