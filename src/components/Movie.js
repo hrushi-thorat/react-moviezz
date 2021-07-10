@@ -1,14 +1,17 @@
 import React from "react"
 import { motion } from "framer-motion"
 import styled from "styled-components"
-
-
+import { useDispatch } from "react-redux"
+import { loadDetails } from "../Actions/DetailAction"
 
 const Movie=({name,descriptiion,poster,id,rating})=>{
-
+const dispatch=useDispatch()
+const loadDetailHandler=()=>{
+dispatch(loadDetails(id))
+}
 
     return(
-        <MovieStyle>
+        <MovieStyle onClick={loadDetailHandler}>
             <h2>{name}</h2>
             <p>{rating}/10</p>    
             <img src={poster} alt={name} />
