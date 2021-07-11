@@ -8,6 +8,7 @@ const Movie = ({ name, descriptiion, poster, id, rating }) => {
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
     dispatch(loadDetails(id));
+    document.body.style.overflow = "hidden";
   };
 
   return (

@@ -4,14 +4,22 @@ import styled from "styled-components"
 import {motion} from "framer-motion"
 //redux
 import { useSelector } from "react-redux"
-
+import { useHistory } from "react-router"
 const MovieDetails=()=>{
+    const History=useHistory()
 const {image,movie,isLoading}=useSelector((state)=>state.details)
  const backImage="https://image.tmdb.org/t/p/w500" + movie.poster_path
+const exitHandler=(e)=>{
+if(e.target.classList.contains("shadow")){
+    document.body.style.overflow="auto"
+    History.push("/")
+}
+}
+
 return(
     <>
     {!isLoading &&(
-<MovieShadow>
+<MovieShadow  className="shadow" onClick={exitHandler}>
 <DetailCard>
 <Stats>
     <Rating>
@@ -61,6 +69,7 @@ overflow-y: scroll;
 position: fixed;
 top: 0;
 left: 0;
+cursor: pointer;
 `
 const DetailCard=styled(motion.div)`
 width: 70%;
