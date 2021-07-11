@@ -1,4 +1,5 @@
 import React from "react";
+import { Route } from "react-router-dom";
 //pages
 import Home from "./pages/Home";
 //components
@@ -8,7 +9,9 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <Home />
+      <Route path={["/game/:id", "/"]}>
+        <Home />
+      </Route>
     </div>
   );
 }
