@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { loadmovies } from "../Actions/moviesAction";
 import Movie from "../components/Movie";
 import MovieDetails from "../components/MovieDetails";
@@ -12,6 +13,7 @@ const Home = () => {
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
   //fetching data
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadmovies());
@@ -21,20 +23,24 @@ const Home = () => {
 
   return (
     <MoviesStyle>
-      {pathId && <MovieDetails />}
-      <HeadingStyle>popular movies:</HeadingStyle>
-      <Movies>
-        {upcoming.map((movie) => (
-          <Movie
-            name={movie.original_title}
-            descriptiion={movie.overview}
-            id={movie.id}
-            poster={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
-            rating={movie.vote_average}
-            key={movie.id}
-          ></Movie>
-        ))}
-      </Movies>
+      <AnimateSharedLayout type="crossfade">
+        <AnimatePresence>
+          {pathId && <MovieDetails pathId={pathId} />}
+        </AnimatePresence>
+        <HeadingStyle>popular movies:</HeadingStyle>
+        <Movies>
+          {popular.map((movie) => (
+            <Movie
+              name={movie.original_title}
+              descriptiion={movie.overview}
+              id={movie.id}
+              poster={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+              rating={movie.vote_average}
+              key={movie.id}
+            ></Movie>
+          ))}
+        </Movies>
+      </AnimateSharedLayout>
     </MoviesStyle>
   );
 };

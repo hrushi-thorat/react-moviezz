@@ -5,18 +5,25 @@ import { useDispatch } from "react-redux";
 import { loadDetails } from "../Actions/DetailAction";
 import { Link } from "react-router-dom";
 const Movie = ({ name, descriptiion, poster, id, rating }) => {
+  const stringpathID = id.toString();
+
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
     dispatch(loadDetails(id));
+
     document.body.style.overflow = "hidden";
   };
 
   return (
-    <MovieStyle onClick={loadDetailHandler}>
+    <MovieStyle layoutId={stringpathID} onClick={loadDetailHandler}>
       <Link to={`/game/${id}`}>
         <h2>{name}</h2>
         <p>{rating}/10</p>
-        <img src={poster} alt={name} />
+        <motion.img
+          layoutId={`image ${stringpathID}`}
+          src={poster}
+          alt={name}
+        />
       </Link>
     </MovieStyle>
   );

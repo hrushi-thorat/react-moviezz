@@ -5,10 +5,11 @@ import {motion} from "framer-motion"
 //redux
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router"
-const MovieDetails=()=>{
-    const History=useHistory()
+
+
+const MovieDetails=({pathID})=>{
+   const History=useHistory()
 const {image,movie,isLoading}=useSelector((state)=>state.details)
- const backImage="https://image.tmdb.org/t/p/w500" + movie.poster_path
 const exitHandler=(e)=>{
 if(e.target.classList.contains("shadow")){
     document.body.style.overflow="auto"
@@ -20,7 +21,7 @@ return(
     <>
     {!isLoading &&(
 <MovieShadow  className="shadow" onClick={exitHandler}>
-<DetailCard>
+<DetailCard layoutId={pathID}>
 <Stats>
     <Rating>
         <h3>{movie.original_title}</h3>
@@ -36,7 +37,7 @@ return(
     </Info>
 </Stats>
 <Media>
-    <img src={backImage} alt={movie.name} />
+    <motion.img layoutId={`image ${pathID}`} src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.name} />
 </Media>
 <Description>
     <p>{movie.overview}</p>
@@ -44,7 +45,7 @@ return(
 <div className="gallery">
     {image.backdrops.map(screen=>(
         
-        <img src={"https://image.tmdb.org/t/p/w500"+screen.file_path } alt="movie.name" />
+        <img src={"https://image.tmdb.org/t/p/w500"+screen.file_path } alt="movie.name" key={screen.file_path}/>
     ))}
 </div>
 
