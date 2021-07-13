@@ -36,6 +36,7 @@ const MovieStyle = styled(motion.div)`
   cursor: pointer;
   background: white;
   overflow: hidden;
+  display: inline-block;
   img {
     width: 100%;
     height: 50vh;

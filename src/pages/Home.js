@@ -47,6 +47,7 @@ const Home = () => {
 
 const MoviesStyle = styled(motion.div)`
   padding: 0rem 5rem;
+  overflow-x: scroll;
 `;
 
 const HeadingStyle = styled(motion.h2)`
@@ -60,5 +61,6 @@ const Movies = styled(motion.div)`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-column-gap: 3rem;
   grid-row-gap: 5rem;
+  overflow-x: scroll;
 `;
 export default Home;

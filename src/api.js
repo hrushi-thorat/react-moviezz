@@ -14,3 +14,6 @@ export const upcomingMoviesURL = () => `${baseURL}${upcomingMovies}`;
 export const MoviedetailsURL = (movie_id) => `${baseURL}${movie_id}${apikey}`;
 export const MovieImagesURL = (movie_id) =>
   `${baseURL}${movie_id}/images${apikey}`;
+
+export const searchURL = (keyword) =>
+  `${baseURL}search/${keyword}${apikey}${last(1)}`;
