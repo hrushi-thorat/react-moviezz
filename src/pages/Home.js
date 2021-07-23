@@ -54,6 +54,9 @@ const HeadingStyle = styled(motion.h2)`
   padding: 4rem 0rem;
   font-size: 3.5rem;
   color: #e9e6e6;
+  @media (max-width: 900px) {
+    font-size: 2rem;
+  }
 `;
 const Movies = styled(motion.div)`
   min-height: 80vh;
